@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "5ff79a46-25eb-4158-add5-b40e2a6c3d3b",
+		"name": "hackathoon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14801709"
+	},
+	"item": [
+		{
+			"name": "signUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Tudorel-Alexandru\",\r\n    \"lastName\": \"Blidea\",\r\n    \"username\": \"tudache123\",\r\n    \"email\": \"tudorelblidea2@gmail.com\",\r\n    \"phoneNumber\": \"0761037652\",\r\n    \"password\": \"tudache123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signIn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"tudache123\",\r\n    \"password\": \"tudache123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signIn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domains",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://172.23.240.1:8080/api/public/domains",
+					"protocol": "http",
+					"host": [
+						"172",
+						"23",
+						"240",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"public",
+						"domains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "skills",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0dWRkaSIsImlhdCI6MTY5OTcyNzQ5OCwiZXhwIjoxNjk5ODEzODk4fQ.MiUIL3scTBOerDbjjcNSMUUifz2cRjsURZu8IiH6KE5E_JDa_GZ9i7lrN3ZwQVGPmJOfMSvGbwmqK07hPJ5D9w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"domain\": \"embedded\",\r\n        \"practicalScore\": 30,\r\n        \"experienceInMonths\": 24\r\n    },\r\n    {\r\n        \"domain\": \"networking\",\r\n        \"practicalScore\": 15,\r\n        \"experienceInMonths\": 24\r\n    },\r\n    {\r\n        \"domain\": \"backend\",\r\n        \"practicalScore\": 69,\r\n        \"theoreticalScore\": 9,\r\n        \"experienceInMonths\": 12\r\n    },\r\n        {\r\n        \"domain\": \"backend\",\r\n        \"practicalScore\": 420,\r\n        \"theoreticalScore\": 420,\r\n        \"experienceInMonths\": 120\r\n    }\r\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/skills",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"skills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "skills",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0dWRkaSIsImlhdCI6MTY5OTcyNzQ5OCwiZXhwIjoxNjk5ODEzODk4fQ.MiUIL3scTBOerDbjjcNSMUUifz2cRjsURZu8IiH6KE5E_JDa_GZ9i7lrN3ZwQVGPmJOfMSvGbwmqK07hPJ5D9w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/skills",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"skills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0dWRhY2hlMTIzIiwiaWF0IjoxNjk5NzQ0Mjk0LCJleHAiOjE2OTk4MzA2OTR9.jSfuHlDWogzvoPR5PDcP0txBvA_F5kw3oulXhoHvYH7dzAnCzt8slzE9qsqJppq1qN122lcHELVB1rkzHbKy9Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/profile/my",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"profile",
+						"my"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

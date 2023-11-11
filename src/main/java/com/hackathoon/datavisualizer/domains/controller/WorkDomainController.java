@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.licenta.datavisualizer.Mappings.DOMAINS;
+import static com.hackathoon.datavisualizer.Mappings.DOMAINS;
 
 @RestController
 @AllArgsConstructor

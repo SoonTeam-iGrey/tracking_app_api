@@ -20,7 +20,7 @@ import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.List;
 
-import static com.licenta.datavisualizer.Mappings.*;
+import static com.hackathoon.datavisualizer.Mappings.*;
 
 @Configuration
 @EnableWebSecurity

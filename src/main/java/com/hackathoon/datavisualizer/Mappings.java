@@ -1,4 +1,4 @@
-package com.licenta.datavisualizer;
+package com.hackathoon.datavisualizer;
 
 import lombok.NoArgsConstructor;
 
@@ -15,5 +15,6 @@ public class Mappings {
     public static final String PUBLIC_API = API + "/public";
     public static final String DOMAINS = PUBLIC_API + "/domains";
     public static final String SKILLS = API + "/skills";
+    public static final String PROFILE = API + "/profile";
 
 }

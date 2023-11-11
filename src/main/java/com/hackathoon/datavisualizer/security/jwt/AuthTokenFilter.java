@@ -3,7 +3,7 @@ package com.hackathoon.datavisualizer.security.jwt;
 import com.hackathoon.datavisualizer.exception.AuthTokenMissingException;
 import com.hackathoon.datavisualizer.security.details.UserDetailsServiceImpl;
 import com.hackathoon.datavisualizer.security.jwt.parsers.JwtParser;
-import com.licenta.datavisualizer.Mappings;
+import com.hackathoon.datavisualizer.Mappings;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,7 +11,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static com.licenta.datavisualizer.Mappings.PUBLIC_API;
+import static com.hackathoon.datavisualizer.Mappings.PUBLIC_API;
 
 @Slf4j
 @Component
