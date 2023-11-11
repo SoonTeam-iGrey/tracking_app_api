@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
-import static com.licenta.datavisualizer.Mappings.SKILLS;
+import static com.hackathoon.datavisualizer.Mappings.SKILLS;
 
 @RestController
 @AllArgsConstructor
