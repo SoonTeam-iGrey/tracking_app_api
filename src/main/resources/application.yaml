@@ -2,7 +2,7 @@ spring:
   datasource:
     username: ${DB_CF_ALG_USER:skilltracker_app}
     password: ${DB_CF_ALG_PASS:hard_password}
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:skilltracker}
+    url: jdbc:mysql://${DB_HOST:172.16.24.164}:${DB_PORT:3306}/${DB_NAME:skillstracker}
   jpa:
     show-sql: false
     properties:

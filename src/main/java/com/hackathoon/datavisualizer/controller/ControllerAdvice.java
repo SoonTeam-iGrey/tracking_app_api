@@ -27,4 +27,10 @@ public class ControllerAdvice {
                 .toList();
     }
 
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler({org.springframework.security.access.AccessDeniedException.class})
+    public String handleAccessDenied() {
+        return "You don't have access to perform this operation, please authenticate!";
+    }
+
 }

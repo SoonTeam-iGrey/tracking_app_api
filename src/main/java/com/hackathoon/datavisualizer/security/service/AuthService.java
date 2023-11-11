@@ -26,10 +26,13 @@ import java.util.List;
 @AllArgsConstructor
 public class AuthService {
 
+    private static final BadAuthCredentialsException exceptionToThrow =
+            new BadAuthCredentialsException("The username or password are not valid.");
+
     private final JwtUtils jwtUtils;
-    private AuthUserMapper authUserMapper;
+    private final AuthUserMapper authUserMapper;
     private final RolesRepository rolesRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final AuthUserRepository authUserRepository;
     private final AuthenticationManager authenticationManager;
 
@@ -55,7 +58,6 @@ public class AuthService {
                 .build();
     }
 
-
     public JwtResponse signUp(SignUpRequest signUpRequest) {
         checkAccountCreation(signUpRequest);
 
@@ -79,9 +81,12 @@ public class AuthService {
 
     private void checkCredentials(LoginRequest loginRequest) {
         String username = loginRequest.getUsername();
-        String passwordHash = passwordEncoder.encode(loginRequest.getPassword());
-        if (!authUserRepository.existsByUsernameAndPasswordHash(username, passwordHash)) {
-            throw new BadAuthCredentialsException("The username or password are not valid.");
+        if (authUserRepository.existsByUsername(username)) {
+            AuthUserEntity userEntity = authUserRepository.findUserByUsername(username)
+                    .orElseThrow(() -> exceptionToThrow);
+            if (!passwordEncoder.matches(loginRequest.getPassword(), userEntity.getPasswordHash())) {
+                throw exceptionToThrow;
+            }
         }
     }
 
