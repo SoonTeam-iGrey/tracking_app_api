@@ -15,4 +15,16 @@ public interface SkillsTrackingRepository extends JpaRepository<SkillsTrackingEn
         """)
     List<SkillsTrackingEntity> getUserSkillsTracking(String username);
 
+    @Query("""
+        SELECT ste
+        FROM SkillsTrackingEntity ste
+        WHERE ste.user.username = :username AND 
+            ste.moment IN (
+                SELECT max(ste.moment)
+                    FROM SkillsTrackingEntity ste
+                    WHERE ste.user.username = :username
+        )
+        """)
+    List<SkillsTrackingEntity> getLatestUserSkillsTracking(String username);
+
 }

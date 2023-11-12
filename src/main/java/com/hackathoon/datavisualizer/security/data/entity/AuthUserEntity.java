@@ -36,6 +36,7 @@ public class AuthUserEntity {
     private String username;
     @Column(name = "password_hash")
     private String passwordHash;
+
     @OneToMany(mappedBy = "user", fetch = EAGER, cascade = ALL)
     private Set<RoleMappingEntity> roles;
 

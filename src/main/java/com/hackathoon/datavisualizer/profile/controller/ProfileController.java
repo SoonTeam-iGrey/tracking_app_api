@@ -1,16 +1,14 @@
 package com.hackathoon.datavisualizer.profile.controller;
 
+import com.hackathoon.datavisualizer.profile.data.dto.response.InterviewScheduleResponse;
 import com.hackathoon.datavisualizer.profile.data.dto.response.ProfileResponse;
 import com.hackathoon.datavisualizer.profile.service.ProfileService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 import static com.hackathoon.datavisualizer.Mappings.PROFILE;
 
@@ -25,7 +23,13 @@ public class ProfileController {
     @GetMapping("/my")
     @PreAuthorize("isAuthenticated()")
     public ProfileResponse getMyProfile(Principal principal) {
-        return profileService.getMyProfile(principal.getName());
+        return profileService.getProfileByUsername(principal.getName());
+    }
+
+    @PostMapping("/schedule")
+//    @PreAuthorize("hasAuthority('RECRUITER')")
+    public List<InterviewScheduleResponse> scheduleToInterview(@RequestBody List<String> usernames) {
+        return profileService.scheduleProfilesToInterview(usernames);
     }
 
 }

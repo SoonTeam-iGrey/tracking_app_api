@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -41,6 +42,23 @@ public class SkillsTrackingService {
 
         return toPersist.stream()
                 .map(skillsTrackerMapper::entityToResponse)
+                .toList();
+    }
+
+    public List<AddedSkillsTrackingEntryResponse> getUserLatestSkills(String username) {
+        return skillsTrackingRepository.getLatestUserSkillsTracking(username).stream()
+                .map(skillsTrackerMapper::entityToResponse)
+                .toList();
+    }
+
+    public List<AddedSkillsTrackingEntryResponse> getUserLatestSkills2(String username) {
+        var mySkills = getMySkillsTracking(username);
+        LocalDateTime maxDate = mySkills.stream().max(Comparator.comparing(AddedSkillsTrackingEntryResponse::getMoment))
+                .map(AddedSkillsTrackingEntryResponse::getMoment)
+                .orElse(LocalDateTime.now());
+
+        return mySkills.stream()
+                .filter(skill -> skill.getMoment().equals(maxDate))
                 .toList();
     }
 
